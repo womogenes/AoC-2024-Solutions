@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 with open("day_01.in") as fin:
     data = fin.read()
 
@@ -10,10 +12,11 @@ for line in data.strip().split("\n"):
     a.append(nums[0])
     b.append(nums[1])
 
-a.sort()
-b.sort()
+counts = defaultdict(int)
+for x in b:
+    counts[x] += 1
 
-for i in range(len(a)):
-    ans += abs(a[i] - b[i])
+for x in a:
+    ans += x * counts[x]
 
 print(ans)
