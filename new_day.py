@@ -10,11 +10,11 @@ prefix = f"day_{str(day).zfill(2)}"
 if not prefix in os.listdir():
     os.mkdir(prefix)
     os.chdir(prefix)
-    with open(f"./{prefix}_p1.py", "w") as fout:
-        fout.write(f"""with open("./{prefix}.in") as fin:
+    with open(f"./p1_{prefix}.py", "w") as fout:
+        fout.write(rf"""with open("./{prefix}.in") as fin:
     lines = fin.read().strip().split("\n")
 """)
 
-    open(f"./{prefix}_p2.py", "w")
+    open(f"./p2_{prefix}.py", "w")
 
     open(f"./{prefix}.in", "w")
