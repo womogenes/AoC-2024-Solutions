@@ -22,6 +22,23 @@ jj = j
 
 dd = [[-1, 0], [0, 1], [1, 0], [0, -1]]
 
+# Assess possible starting locations
+dir = 0
+og_seen = set()
+while True:
+    og_seen.add((i, j))
+
+    next_i = i + dd[dir][0]
+    next_j = j + dd[dir][1]
+
+    if not (0 <= next_i < n and 0 <= next_j < n):
+        break
+
+    if grid[next_i][next_j] == "#":
+        dir = (dir + 1) % 4
+    else:
+        i, j = next_i, next_j
+
 def will_loop(oi, oj):
     if grid[oi][oj] == "#":
         return False
@@ -41,20 +58,17 @@ def will_loop(oi, oj):
         next_j = j + dd[dir][1]
 
         if not (0 <= next_i < n and 0 <= next_j < n):
+            grid[oi][oj] = "."
             return False
 
         if grid[next_i][next_j] == "#":
-            grid[oi][oj] = "."
             dir = (dir + 1) % 4
         else:
             i, j = next_i, next_j
 
 ans = 0
-for oi in tqdm(range(n)):
-    for oj in range(n):
-        loop = will_loop(oi, oj)
-        ans += loop
-    
-    print(ans)
+for oi, oj in tqdm(og_seen):
+    loop = will_loop(oi, oj)
+    ans += loop
 
 print(ans)
