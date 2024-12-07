@@ -68,6 +68,9 @@ def will_loop(oi, oj):
 
 ans = 0
 for oi, oj in tqdm(og_seen):
+    # Cannot place obstacle where guard currently is
+    if oi == ii and oj == jj:
+        continue
     loop = will_loop(oi, oj)
     ans += loop
 
