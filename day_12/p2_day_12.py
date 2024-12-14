@@ -36,16 +36,6 @@ for i in range(n):
                 ii, jj = ci + di, cj + dj
                 stack.append((ii, jj))
 
-def count_free(i, j):
-    ans = 0
-    for di, dj in dd:
-        ii, jj = i + di, j + dj
-        if not in_grid(ii, jj):
-            ans += 1
-        elif grid[ii][jj] != grid[i][j]:
-            ans += 1
-    return ans
-
 def perim(plot):
     # Iterate through all 2x2 subplots
     plot = set(plot)
@@ -65,7 +55,6 @@ def perim(plot):
     ans = 0
     for i in range(mini-1, maxi):
         for j in range(minj-1, maxj):
-            has_corner = True
             res = test([(i,j), (i,j+1), (i+1,j), (i+1,j+1)])
             has_corner = res in [[1, 0, 0, 0],
                                  [0, 1, 0, 0],

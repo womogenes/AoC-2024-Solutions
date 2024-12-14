@@ -36,7 +36,7 @@ for i in range(n):
                 ii, jj = ci + di, cj + dj
                 stack.append((ii, jj))
 
-def count_free(i, j, plot):
+def count_free(i, j):
     ans = 0
     for di, dj in dd:
         ii, jj = i + di, j + dj
@@ -49,7 +49,7 @@ def count_free(i, j, plot):
 def perim(plot):
     ans = 0
     for i, j in plot:
-        ans += count_free(i, j, plot)
+        ans += count_free(i, j)
     return ans
 
 ans = 0
