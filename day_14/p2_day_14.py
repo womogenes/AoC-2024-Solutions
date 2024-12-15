@@ -42,9 +42,9 @@ def count_robots(i0, i1, j0, j1):
 seen = {}
 step = 0
 while True:
-    picture = [[" "] * (m) for _ in range(n//3+1)]
+    picture = [["  "] * (m) for _ in range(n)]
     for i, j in p:
-        picture[i//3][j] = "#"
+        picture[i][j] = "##"
 
     picture = "\n".join(["".join(line) for line in picture])
     if picture in seen:
@@ -52,9 +52,8 @@ while True:
         break
     seen[picture] = step
 
-    if step == 8258:
-        print(picture)
-        print("\n" * 2)
+    print(picture)
+    print("\n" * 2)
     
     update()
 
