@@ -86,7 +86,6 @@ def get_cost(a, b, keypad, depth=0):
         return min([len(x) for x in generate_ways(a, b, True)])
 
     ways = generate_ways(a, b, keypad)
-    print(ways)
     best_cost = 1<<60
     for seq in ways:
         seq = "A" + seq
